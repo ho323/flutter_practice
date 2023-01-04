@@ -1,2 +1,2 @@
-# flutter_projects
+# flutter_practice
 flutter practice projects
