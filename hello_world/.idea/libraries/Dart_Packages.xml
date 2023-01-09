@@ -72,13 +72,6 @@
             </list>
           </value>
         </entry>
-        <entry key="hello_world">
-          <value>
-            <list>
-              <option value="$PROJECT_DIR$/../lib" />
-            </list>
-          </value>
-        </entry>
         <entry key="lints">
           <value>
             <list>
@@ -196,7 +189,6 @@
       <root url="file://$USER_HOME$/Documents/libraries/flutter/bin/cache/pkg/sky_engine/lib" />
       <root url="file://$USER_HOME$/Documents/libraries/flutter/packages/flutter/lib" />
       <root url="file://$USER_HOME$/Documents/libraries/flutter/packages/flutter_test/lib" />
-      <root url="file://$PROJECT_DIR$/../lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

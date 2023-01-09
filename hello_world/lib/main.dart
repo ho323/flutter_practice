@@ -7,7 +7,7 @@ void main() {
         backgroundColor: Colors.black,
         body: Center(
           child: Text(
-            "hello world",
+            "Hello World",
             style: TextStyle(
               color: Colors.white,
               fontSize: 20.0,
