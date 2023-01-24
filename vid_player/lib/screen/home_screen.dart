@@ -23,6 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Center(
       child: CustomVideoPlayer(
         video: video!,
+        onNewVideoPressed: onNewVideoPressed,
       ),
     );
   }
@@ -35,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           _Logo(
-            onTap: onLogoTap,
+            onTap: onNewVideoPressed,
           ),
           // Padding보다 SizeBox를 쓰면 들여쓰기 한번 안할수 있음
           SizedBox(
@@ -47,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void onLogoTap() async {
+  void onNewVideoPressed() async {
     final video = await ImagePicker().pickVideo(
       source: ImageSource.gallery,
     );
