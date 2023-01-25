@@ -41,6 +41,8 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
   }
 
   initializeController() async {
+    currentPosition = Duration();
+
     videoController = VideoPlayerController.file(
       File(widget.video.path),
     );
