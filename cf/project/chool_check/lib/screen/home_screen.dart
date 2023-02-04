@@ -134,8 +134,8 @@ class _HomeScreenState extends State<HomeScreen> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.of(context)
-                    .pop(false); // Dialog를 하나의 screen으로 생각해서 pop해주면 됨
+                // Dialog를 하나의 screen으로 생각해서 pop해주면 됨
+                Navigator.of(context).pop(false);
               },
               child: Text('취소'),
             ),
