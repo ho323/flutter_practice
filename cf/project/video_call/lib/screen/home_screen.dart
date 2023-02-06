@@ -7,7 +7,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[100],
+      backgroundColor: Colors.green[100],
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -36,11 +36,11 @@ class _Logo extends StatelessWidget {
     return Center(
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.blue,
+          color: Colors.green,
           borderRadius: BorderRadius.circular(16.0),
           boxShadow: [
             BoxShadow(
-              color: Colors.blue[300]!,
+              color: Colors.green[300]!,
               blurRadius: 12.0,
               spreadRadius: 2.0,
             ),
