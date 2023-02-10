@@ -36,13 +36,23 @@ class _HomeScreenState extends State<HomeScreen> {
                 scheduleCount: 3,
               ),
               SizedBox(height: 8.0),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: ScheduleCard(
-                  startTime: 8,
-                  endTime: 14,
-                  content: '프로그래밍 공부하기',
-                  color: Colors.red,
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: ListView.separated(
+                    itemCount: 100,
+                    separatorBuilder: (context, index) {
+                      return SizedBox(height: 8.0);
+                    },
+                    itemBuilder: (context, index) {
+                      return ScheduleCard(
+                        startTime: 8,
+                        endTime: 14,
+                        content: '프로그래밍 공부하기 $index',
+                        color: Colors.red,
+                      );
+                    },
+                  ),
                 ),
               ),
             ],
