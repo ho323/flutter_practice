@@ -3,7 +3,9 @@ import 'package:calendar_schedule/component/schedule_bottom_sheet.dart';
 import 'package:calendar_schedule/component/schedule_card.dart';
 import 'package:calendar_schedule/component/today_banner.dart';
 import 'package:calendar_schedule/const/colors.dart';
+import 'package:calendar_schedule/database/drift_database.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -13,7 +15,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  DateTime selectedDay = DateTime(
+  DateTime selectedDay = DateTime.utc(
     DateTime.now().year,
     DateTime.now().month,
     DateTime.now().day,
@@ -83,19 +85,32 @@ class _ScheduleList extends StatelessWidget {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: ListView.separated(
-          itemCount: 100,
-          separatorBuilder: (context, index) {
-            return SizedBox(height: 8.0);
-          },
-          itemBuilder: (context, index) {
-            return ScheduleCard(
-              startTime: 8,
-              endTime: 14,
-              content: '프로그래밍 공부하기 $index',
-              color: Colors.red,
+        child: StreamBuilder<List<Schedule>>(
+          stream: GetIt.I<LocalDatabase>().watchSchedules(),
+          builder: (context, snapshot) {
+            print(snapshot.data);
+
+            List<Schedule> schedules = [];
+
+            if(snapshot.hasData) {
+              schedules = snapshot.data!
+                  .where((element) => element.date == selectedDay).toList();
+            }
+            return ListView.separated(
+              itemCount: 100,
+              separatorBuilder: (context, index) {
+                return SizedBox(height: 8.0);
+              },
+              itemBuilder: (context, index) {
+                return ScheduleCard(
+                  startTime: 8,
+                  endTime: 14,
+                  content: '프로그래밍 공부하기 $index',
+                  color: Colors.red,
+                );
+              },
             );
-          },
+          }
         ),
       ),
     );
