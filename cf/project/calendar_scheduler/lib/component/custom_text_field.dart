@@ -36,10 +36,33 @@ class CustomTextField extends StatelessWidget {
 
   Widget renderTextField() {
     return TextFormField(
+      onSaved: (String? val) {
+        
+      },
       // null이 return 되도 error가 없다.
       // error가 있으면 error를 string 값으로 return.
       validator: (String? val) {
-        return 'test';
+        if (val == null || val.isEmpty) {
+          return '값을 입력해주세요.';
+        }
+
+        if (isTime) {
+          int time = int.parse(val);
+
+          if (time < 0) {
+            return '0 이상의 숫자를 입력해주세요.';
+          }
+
+          if (time > 24) {
+            return '24 이하의 숫자를 입력해주세요.';
+          }
+        } else {
+          if (val.length > 500) {
+            return '500자 이하의 글자를 입력해주세요.';
+          }
+        }
+
+        return null;
       },
       cursorColor: Colors.grey,
       maxLines: isTime ? 1 : null,
