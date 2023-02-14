@@ -89,13 +89,6 @@ class _ScheduleList extends StatelessWidget {
           stream: GetIt.I<LocalDatabase>().watchSchedules(),
           builder: (context, snapshot) {
             print(snapshot.data);
-
-            List<Schedule> schedules = [];
-
-            if(snapshot.hasData) {
-              schedules = snapshot.data!
-                  .where((element) => element.date == selectedDay).toList();
-            }
             return ListView.separated(
               itemCount: 100,
               separatorBuilder: (context, index) {
