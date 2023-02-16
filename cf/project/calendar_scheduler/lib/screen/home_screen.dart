@@ -90,7 +90,7 @@ class _ScheduleList extends StatelessWidget {
           builder: (context, snapshot) {
             print(snapshot.data);
             return ListView.separated(
-              itemCount: 100,
+              itemCount: 50,
               separatorBuilder: (context, index) {
                 return SizedBox(height: 8.0);
               },
