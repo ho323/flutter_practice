@@ -41,7 +41,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 scheduleCount: 3,
               ),
               SizedBox(height: 8.0),
-              _ScheduleList(),
+              _ScheduleList(
+                selectedDate: selectedDay,
+              ),
             ],
           ),
         ),
@@ -78,7 +80,12 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class _ScheduleList extends StatelessWidget {
-  const _ScheduleList({Key? key}) : super(key: key);
+  final DateTime selectedDate;
+
+  const _ScheduleList({
+    required this.selectedDate,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -86,25 +93,37 @@ class _ScheduleList extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: StreamBuilder<List<Schedule>>(
-          stream: GetIt.I<LocalDatabase>().watchSchedules(),
-          builder: (context, snapshot) {
-            print(snapshot.data);
-            return ListView.separated(
-              itemCount: 50,
-              separatorBuilder: (context, index) {
-                return SizedBox(height: 8.0);
-              },
-              itemBuilder: (context, index) {
-                return ScheduleCard(
-                  startTime: 8,
-                  endTime: 14,
-                  content: '프로그래밍 공부하기 $index',
-                  color: Colors.red,
-                );
-              },
-            );
-          }
-        ),
+            stream: GetIt.I<LocalDatabase>().watchSchedules(),
+            builder: (context, snapshot) {
+              print('----------original data----------');
+              print(snapshot.data);
+
+              List<Schedule> schedules = [];
+
+              if (snapshot.hasData) {
+                schedules = snapshot.data!
+                    .where((element) => element.date == selectedDate)
+                    .toList();
+                print('----------filtered data----------');
+                print(selectedDate);
+                print(schedules);
+              }
+
+              return ListView.separated(
+                itemCount: 50,
+                separatorBuilder: (context, index) {
+                  return SizedBox(height: 8.0);
+                },
+                itemBuilder: (context, index) {
+                  return ScheduleCard(
+                    startTime: 8,
+                    endTime: 14,
+                    content: '프로그래밍 공부하기 $index',
+                    color: Colors.red,
+                  );
+                },
+              );
+            }),
       ),
     );
   }
