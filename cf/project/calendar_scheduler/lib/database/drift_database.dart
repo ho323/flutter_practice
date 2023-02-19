@@ -30,8 +30,21 @@ class LocalDatabase extends _$LocalDatabase {
   Future<List<CategoryColor>> getCategoryColors() =>
       select(categoryColors).get();
 
-  Stream<List<Schedule>> watchSchedules() =>
-      select(schedules).watch();
+  Stream<List<Schedule>> watchSchedules(DateTime date){
+    // final query = select(schedules);
+    // query.where((tbl) => tbl.date.equals(date));
+    // return query.watch();
+
+    int number = 3;
+
+    // '3' -> String
+    final resp = number.toString();
+    // 3 -> int
+    final resp2 = number..toString();
+
+    return (select(schedules)..where((tbl) => tbl.date.equals(date))).watch();
+  }
+
 
   @override
   int get schemaVersion => 1;
