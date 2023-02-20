@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:calendar_schedule/model/category_color.dart';
 import 'package:calendar_schedule/model/schedule.dart';
+import 'package:calendar_schedule/model/schedule_with_color.dart';
 import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
 import 'package:path/path.dart' as p;
@@ -30,21 +31,22 @@ class LocalDatabase extends _$LocalDatabase {
   Future<List<CategoryColor>> getCategoryColors() =>
       select(categoryColors).get();
 
-  Stream<List<Schedule>> watchSchedules(DateTime date){
-    // final query = select(schedules);
-    // query.where((tbl) => tbl.date.equals(date));
-    // return query.watch();
+  Stream<List<ScheduleWithColor>> watchSchedules(DateTime date) {
+    final query = select(schedules).join([
+      innerJoin(categoryColors, categoryColors.id.equalsExp(schedules.colorId))
+    ]);
 
-    int number = 3;
+    query.where(schedules.date.equals(date));
 
-    // '3' -> String
-    final resp = number.toString();
-    // 3 -> int
-    final resp2 = number..toString();
-
-    return (select(schedules)..where((tbl) => tbl.date.equals(date))).watch();
+    return query.watch().map(
+          (rows) => rows.map(
+            (row) => ScheduleWithColor(
+              schedule: row.readTable(schedules),
+              categoryColor: row.readTable(categoryColors),
+            ),
+          ).toList(),
+        );
   }
-
 
   @override
   int get schemaVersion => 1;
