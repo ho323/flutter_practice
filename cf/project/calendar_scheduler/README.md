@@ -1,16 +1,22 @@
 # calendar_schedule
 
-A new Flutter project.
+캘린더 스케줄러 앱
 
-## Getting Started
+## 사용한 패키지
+- cupertino_icons: ^1.0.2
+- table_calendar: ^3.0.9
+- intl: ^0.18.0
+- drift: ^2.5.0
+- sqlite3_flutter_libs: ^0.5.0
+- path_provider: ^2.0.0
+- path: ^1.8.3
+- get_it: ^7.2.0
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 폰트
+NotoSans
+- Black
+- Bold
+- Medium
+- Regular
+- Light
+- Thin
