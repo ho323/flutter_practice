@@ -35,6 +35,10 @@ class CustomScrollViewScreen extends StatelessWidget {
       expandedHeight: 200,
       collapsedHeight: 150,
       flexibleSpace: FlexibleSpaceBar(
+        background: Image.asset(
+          'asset/img/image_1.jpeg',
+          fit: BoxFit.cover,
+        ),
         title: Text('FlexibleSpace'),
       ),
       title: Text('CustomScrollViewScreen'),
@@ -95,7 +99,7 @@ class CustomScrollViewScreen extends StatelessWidget {
   SliverGrid renderSliverGridBuilder() {
     return SliverGrid(
       delegate: SliverChildBuilderDelegate(
-            (context, index) {
+        (context, index) {
           return renderContainer(
             color: rainbowColors[index % rainbowColors.length],
             index: index,
@@ -103,9 +107,8 @@ class CustomScrollViewScreen extends StatelessWidget {
         },
         childCount: 100,
       ),
-      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 100
-      ),
+      gridDelegate:
+          SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 100),
     );
   }
 
