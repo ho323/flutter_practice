@@ -11,12 +11,33 @@ class CustomScrollViewScreen extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverAppBar(
-            title: Text('CustomScrollViewScreen'),
-          ),
+          renderSliverAppbar(),
+          renderBuilderSliverList(),
           renderSliverGridBuilder(),
+          renderBuilderSliverList(),
         ],
       ),
+    );
+  }
+
+  // AppBar
+  SliverAppBar renderSliverAppbar() {
+    return SliverAppBar(
+      // 스크롤 중간에도 위로 땡기면 AppBar 보임
+      floating: true,
+      // 완전고정 - 스크롤 해도 AppBar 고정
+      pinned: false,
+      // 자석효과 - floating 상태에서 살짝만 위로 올려도 AppBar 등장
+      snap: true,
+      // 끝까지 땡기면 AppBar 따라옴
+      stretch: true,
+      // AppBar 크기
+      expandedHeight: 200,
+      collapsedHeight: 150,
+      flexibleSpace: FlexibleSpaceBar(
+        title: Text('FlexibleSpace'),
+      ),
+      title: Text('CustomScrollViewScreen'),
     );
   }
 
