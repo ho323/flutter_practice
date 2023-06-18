@@ -25,6 +25,7 @@ class _CamScreenState extends State<CamScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('LIVE'),
+        backgroundColor: Colors.green,
       ),
       body: FutureBuilder<bool>(
           future: init(),
@@ -73,6 +74,10 @@ class _CamScreenState extends State<CamScreen> {
 
                       Navigator.of(context).pop();
                     },
+                    style: ButtonStyle(
+                      backgroundColor:
+                      MaterialStateColor.resolveWith((states) => Colors.green),
+                    ),
                     child: Text('채널 나가기'),
                   ),
                 ),

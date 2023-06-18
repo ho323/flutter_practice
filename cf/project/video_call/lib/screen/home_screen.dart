@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.green[100],
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
             Expanded(
@@ -92,15 +92,22 @@ class _Button extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => CamScreen(),
-              ),
-            );
-          },
-          child: Text('입장하기'),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => CamScreen(),
+                ),
+              );
+            },
+            style: ButtonStyle(
+              backgroundColor:
+                  MaterialStateColor.resolveWith((states) => Colors.green),
+            ),
+            child: Text('입장하기'),
+          ),
         ),
       ],
     );
