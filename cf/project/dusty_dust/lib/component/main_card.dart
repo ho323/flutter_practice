@@ -2,9 +2,11 @@ import 'package:dusty_dust/const/color.dart';
 import 'package:flutter/material.dart';
 
 class MainCard extends StatelessWidget {
+  final Color backgroundColor;
   final Widget child;
   const MainCard({
     Key? key,
+    required this.backgroundColor,
     required this.child,
   }) : super(key: key);
 
@@ -17,7 +19,7 @@ class MainCard extends StatelessWidget {
           Radius.circular(16.0),
         ),
       ),
-      color: lightColor,
+      color: backgroundColor,
       child: child,
     );
   }
