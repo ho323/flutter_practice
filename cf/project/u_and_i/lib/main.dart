@@ -4,6 +4,7 @@ import 'package:u_and_i/screen/home_screen.dart';
 void main() {
   runApp(
     MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'sunflower',
         textTheme: TextTheme(

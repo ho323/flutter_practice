@@ -39,6 +39,7 @@ void main() async {
 
   runApp(
     MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'NotoSans'),
       home: HomeScreen(),
     ),

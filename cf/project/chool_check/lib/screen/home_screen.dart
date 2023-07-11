@@ -15,8 +15,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // latitude - 위도, longitude - 경도
   static final LatLng companyLatLng = LatLng(
-    37.7597907,
-    127.0778709,
+    37.738736,
+    127.050570,
   );
   static final CameraPosition initialPosition = CameraPosition(
     target: companyLatLng,
